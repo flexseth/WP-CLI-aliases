@@ -1,0 +1,338 @@
+.TH WP\-ALIASES 1 "June 2026" "WP-CLI-aliases" "User Commands"
+.SH NAME
+wp\-aliases \- shell shortcuts for WP\-CLI commands
+.SH SYNOPSIS
+.B wp\-aliases
+[\fICOMMAND\fR] [\fIOPTIONS\fR]
+.PP
+.B install.sh
+[\fIOPTIONS\fR]
+.PP
+.B setup.sh
+.SH DESCRIPTION
+.B WP\-CLI\-aliases
+is a collection of short bash/zsh shell aliases that reduce the typing
+required for common WP\-CLI commands.  For example, instead of typing
+\fBwp plugin install\fR you can type \fBwppi\fR.
+.PP
+The project provides three entry points:
+.TP
+.B install.sh
+The master installer.  Sources alias files into your shell configuration
+(\fI~/.bashrc\fR, \fI~/.zshrc\fR, or \fI~/.profile\fR).
+.TP
+.B setup.sh
+An interactive wizard that lets you pick which alias categories to install.
+.TP
+.B wp\-aliases
+A post\-install management tool for listing, searching, and exploring aliases.
+.SH INSTALL OPTIONS
+.TP
+.B \-\-all
+Install every alias category.
+.TP
+.B \-\-popular
+Install only the curated popular\-commands set (recommended for new users).
+.TP
+\fB\-\-category\fR \fINAME\fR
+Install a specific category.  May be repeated.
+.TP
+.B \-\-interactive
+Launch the interactive setup wizard (\fBsetup.sh\fR).
+.TP
+.B \-\-list
+Print all available category names.
+.TP
+.B \-\-uninstall
+Remove all WP\-CLI alias entries from your shell configuration file.
+.TP
+\fB\-\-shell\-config\fR \fIFILE\fR
+Override the target shell configuration file.
+.TP
+.BR \-h ", " \-\-help
+Show install help text and exit.
+.SH WP\-ALIASES COMMANDS
+.TP
+.B list
+Print every alias across all categories.
+.TP
+\fBlist \-\-category\fR \fICAT\fR
+Print aliases for the named category (e.g.\& \fIplugin\fR, \fIdb\fR, \fIpopular\fR).
+.TP
+.B categories
+Print all categories with short descriptions.
+.TP
+\fBsearch\fR \fITERM\fR
+Search alias names and descriptions for \fITERM\fR.
+.TP
+.B man
+Display this man page.
+.TP
+.BR help ", " \-\-help ", " \-h
+Show usage information.
+.SH ALIAS CATEGORIES
+.TP
+.B core
+WordPress core: download, install, update, verify\-checksums, version.
+.TP
+.B plugin
+Plugins: install, activate, deactivate, list, update, delete, status.
+.TP
+.B theme
+Themes: install, activate, list, update, delete, status.
+.TP
+.B post
+Posts: create, get, list, update, delete, meta.
+.TP
+.B user
+Users: create, get, list, update, delete, roles, meta.
+.TP
+.B option
+Options: get, add, update, delete, list, autoload filters.
+.TP
+.B db
+Database: create, drop, import, export, query, CLI, optimize, repair, check, clean, size, search.
+.TP
+.B config
+wp\-config.php: create, get, set, delete, list, path, shuffle\-salts.
+.TP
+.B search\-replace
+Search and replace strings across the database; dry\-run, regex, export modes.
+.TP
+.B cache
+Object cache: flush, get, set, add, delete.  Also covers transients.
+.TP
+.B cron
+WP\-Cron: list events, run events, create/delete events, list schedules, test.
+.TP
+.B term
+Taxonomy terms: create, get, list, update, delete, meta, generate.
+.TP
+.B comment
+Comments: create, get, list, update, delete, approve, spam, trash.
+.TP
+.B media
+Media: import, regenerate thumbnails, list image sizes.
+.TP
+.B rewrite
+Rewrite rules: flush (soft and hard), list, set structure.
+.TP
+.B role
+User roles & capabilities: create/list/delete roles; add/list/remove capabilities.
+.TP
+.B scaffold
+Code generation: plugin, theme, child\-theme, post\-type, taxonomy, block scaffolding.
+.TP
+.B package
+WP\-CLI packages: install, list, update, remove, browse, path.
+.TP
+.B import\-export
+Content: import WXR files, export all or filtered content.
+.TP
+.B eval
+PHP evaluation: eval inline code, eval\-file, common one\-liners.
+.TP
+.B popular
+Curated set of the most frequently used aliases from all categories.
+.SH NAMING CONVENTION
+Aliases follow the pattern \fBwp\fR + \fBcategory\-prefix\fR + \fBaction\fR.
+.PP
+Category prefixes:
+.RS
+.TP 10
+.B wpc
+wp core
+.TP
+.B wpp
+wp plugin
+.TP
+.B wpt
+wp theme
+.TP
+.B wppo
+wp post
+.TP
+.B wpu
+wp user
+.TP
+.B wpop
+wp option
+.TP
+.B wpdb
+wp db
+.TP
+.B wpcfg
+wp config
+.TP
+.B wpsr
+wp search\-replace
+.TP
+.B wpca
+wp cache
+.TP
+.B wpcr
+wp cron
+.TP
+.B wptm
+wp term
+.TP
+.B wpcom
+wp comment
+.TP
+.B wpmdi
+wp media
+.TP
+.B wprw
+wp rewrite
+.TP
+.B wprl
+wp role
+.TP
+.B wpcap
+wp cap
+.TP
+.B wpscaf
+wp scaffold
+.TP
+.B wppkg
+wp package
+.TP
+.B wpimp
+wp import
+.TP
+.B wpexp
+wp export
+.TP
+.B wpev
+wp eval
+.TP
+.B wptr
+wp transient
+.RE
+.PP
+Common action suffixes:
+.RS
+.TP 6
+.B i
+install
+.TP
+.B a
+activate
+.TP
+.B d
+deactivate
+.TP
+.B l
+list
+.TP
+.B u
+update
+.TP
+.B c
+create
+.TP
+.B g
+get
+.TP
+.B r
+remove / delete
+.TP
+.B s
+status / set
+.TP
+.B f
+flush
+.TP
+.B e
+export
+.TP
+.B ck
+check / verify
+.TP
+.B ver
+version
+.TP
+.B ua
+update \-\-all
+.TP
+.B ia
+install \-\-activate
+.RE
+.SH EXAMPLES
+.PP
+Install the popular alias set:
+.RS
+.EX
+./install.sh --popular
+source ~/.bashrc
+.EE
+.RE
+.PP
+Then use plugin shortcuts:
+.RS
+.EX
+wppi query-monitor           # wp plugin install query-monitor
+wppia debug-bar              # wp plugin install debug-bar --activate
+wppua                        # wp plugin update --all
+wppl                         # wp plugin list
+.EE
+.RE
+.PP
+Database workflows:
+.RS
+.EX
+wpdbe backup.sql             # wp db export backup.sql
+wpdbi staging.sql            # wp db import staging.sql
+wpsr 'http://old.dev' 'https://new.dev'   # wp search-replace
+wpsrd 'http://old.dev' 'https://new.dev'  # preview first
+.EE
+.RE
+.PP
+Theme management:
+.RS
+.EX
+wptia twentytwentyfive       # install + activate theme
+wptua                        # update all themes
+wptl                         # list themes
+.EE
+.RE
+.PP
+Explore and search aliases post\-install:
+.RS
+.EX
+wp-aliases categories
+wp-aliases list --category db
+wp-aliases search cache
+.EE
+.RE
+.SH FILES
+.TP
+.I aliases/
+Per\-category alias definition files sourced into your shell.
+.TP
+.I popular.sh
+Curated popular alias set.
+.TP
+.I install.sh
+Master installation script.
+.TP
+.I setup.sh
+Interactive setup wizard.
+.TP
+.I bin/wp-aliases
+Post\-install management CLI.
+.TP
+.I docs/wp\-aliases.1
+This man page.
+.SH SEE ALSO
+.BR wp (1),
+.BR bash (1),
+.BR zsh (1)
+.PP
+WP\-CLI documentation: \fIhttps://developer.wordpress.org/cli/commands/\fR
+.PP
+Project repository: \fIhttps://github.com/flexseth/WP-CLI-aliases\fR
+.SH AUTHOR
+WP\-CLI\-aliases contributors.
+.SH LICENSE
+MIT License.
